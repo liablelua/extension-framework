@@ -15,3 +15,14 @@ Framework.Cast = {
     }
 }
 
+Framework.Create = {
+    Header: () => {
+        return document.createElement("header");
+    },
+    Text: () => {
+        return document.createElement("p");
+    },
+    Image: () => {
+        return document.createElement("img");
+    }
+}
