@@ -2,7 +2,7 @@ const Framework = {}; // Initalize Framework Const
 
 Framework.Cast = {
   String: (x) => {
-    return toString(x);
+    return String(x);
   },
   Number: (x) => {
     return Number(x);
@@ -43,7 +43,7 @@ Framework.Wrap = (funct) => {
 Framework.LoadExtension = (src) => {
   const ext = document.createElement("script");
   ext.src = src;
-  document.append(ext);
+  document.body.append(ext);
 };
 
 const CheckFrameworkLine = (x) => {
