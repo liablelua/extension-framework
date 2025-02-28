@@ -7,6 +7,7 @@
 
 Framework.Wrap(function () {
   const Paragraph = Framework.Create.Text();
-  Paragraph.textContent = "\nHello From Framework!";
+  Paragraph.textContent = "\nEnter in JavaScript Code:\n";
+  
   Framework.AppendBody(Paragraph);
 });

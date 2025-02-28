@@ -1,5 +1,6 @@
 const Framework = {}; // Initalize Framework Const
 var Styles = [];
+var STRICT_MODE = true;
 
 Framework.Cast = {
   String: (x) => {
@@ -29,6 +30,12 @@ Framework.Create = {
   Input: () => {
     return document.createElement("input");
   },
+  Divider: () => {
+    return document.createElement("div");
+  },
+  Button: () => {
+    return document.createElement("button");
+  }
 };
 
 Framework.AppendBody = (x) => {
@@ -38,6 +45,15 @@ Framework.AppendBody = (x) => {
 Framework.Append = (a, b) => {
   a.append(b);
 };
+
+Framework.Strict = (x) => {
+  STRICT_MODE = x;
+}
+
+Framework.JavaScript = (x) => {
+  if (STRICT_MODE) return;
+  eval(x);
+}
 
 const refreshStyles = () => {
   const existingStyle = document.getElementById("framework-styles");
