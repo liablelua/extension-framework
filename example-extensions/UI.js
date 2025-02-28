@@ -25,6 +25,11 @@ Framework.Wrap(function () {
   Button.addEventListener("click", () => {
     Framework.JavaScript(Input.value);
     Paragraph.textContent = Input.value;
+
+    // Turn off Calc
+
+    Framework.Strict(true);
+    Divider.remove();
   });
 
   Framework.Append(Divider, Paragraph);
