@@ -5,9 +5,9 @@
     
 */
 
-Framework.Wrap(function() {
-    Framework.Style("background-color", "black");
-    Framework.Style("color", "white");
-    Framework.Style("font-size", "30px");
-    Framework.Style("font-family", "Arial, Sans-Serif");
-})
+Framework.Wrap(function () {
+  Framework.Style("body", "background-color", "black");
+  Framework.Style("*", "color", "white");
+  Framework.Style("*", "font-size", "30px");
+  Framework.Style("*", "font-family", "Arial, Sans-Serif");
+});

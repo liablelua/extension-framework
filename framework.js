@@ -1,5 +1,5 @@
 const Framework = {}; // Initalize Framework Const
-var ALLSTYLES = "";
+var Styles = [];
 
 Framework.Cast = {
   String: (x) => {
@@ -39,10 +39,26 @@ Framework.Append = (a, b) => {
   a.append(b);
 };
 
-Framework.Style = (A, B) => {
-  ALLSTYLES += A + ": " + B + ";";
-  document.body.style = ALLSTYLES;
-}
+const refreshStyles = () => {
+  const existingStyle = document.getElementById("framework-styles");
+  if (existingStyle !== null) existingStyle.remove();
+
+  const styleElement = document.createElement("style");
+  styleElement.id = "framework-styles";
+
+  let styleText = "";
+  for (let i = 0; i < Styles.length; i++) {
+    styleText += Styles[i];
+  }
+
+  styleElement.textContent = styleText;
+  document.head.appendChild(styleElement);
+};
+
+Framework.Style = (A, B, C) => {
+  Styles.push(A + " {" + B + ": " + C + ";}");
+  refreshStyles();
+};
 
 Framework.String = {
   Find: (a, b) => {
