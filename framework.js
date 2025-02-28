@@ -86,6 +86,12 @@ Framework.Wrap = (funct) => {
   funct(); // Run extension.
 };
 
+function getFileContent(url) { // stackoverflow
+  fetch(url).then(response => {
+    return response.text();
+  });
+}
+
 Framework.LoadExtension = (src) => {
   const ext = document.createElement("script");
   ext.src = src;
@@ -93,16 +99,19 @@ Framework.LoadExtension = (src) => {
 };
 
 const CheckFrameworkLine = (x) => {
-  if (Framework.String.Find(x, "iframe")) {
-    return false; // Terminate Extension!! We don't need IFrames!!
-  }
+  const BannedPhrases = [ // NEVER string.lower x. That would make Framework.Style be banned.
+    "eval",
+    "document",
+    ".style",
+    "link",
+    "iframe",
+    "embed"
+  ];
 
-  if (Framework.String.Find(x, "embed")) {
-    return false; // Terminate Extension!! We don't need Embeds!!
-  }
-
-  if (Framework.String.Find(x, "document")) {
-    return false; // Terminate Extension!! We have a Custom document en-closed safe-based framework.
+  for (i = 0; i < BannedPhrases.length; i++) {
+    if (Framework.String.Find(x, BannedPhrases[i])) {
+      return STRICT_MODE ? false : true; // Kill extension
+    }
   }
 
   return true; // Line is safe C:
