@@ -1,4 +1,5 @@
 const Framework = {}; // Initalize Framework Const
+var ALLSTYLES = "";
 
 Framework.Cast = {
   String: (x) => {
@@ -37,6 +38,11 @@ Framework.AppendBody = (x) => {
 Framework.Append = (a, b) => {
   a.append(b);
 };
+
+Framework.Style = (A, B) => {
+  ALLSTYLES += A + ": " + B + ";";
+  document.body.style = ALLSTYLES;
+}
 
 Framework.String = {
   Find: (a, b) => {
