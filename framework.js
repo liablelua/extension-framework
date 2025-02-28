@@ -30,6 +30,14 @@ Framework.Create = {
   },
 };
 
+Framework.AppendBody = (x) => {
+  document.body.append(x);
+};
+
+Framework.Append = (a, b) => {
+  a.append(b);
+};
+
 Framework.String = {
   Find: (a, b) => {
     return a.search(b);
@@ -61,5 +69,3 @@ const CheckFrameworkLine = (x) => {
 
   return true; // Line is safe C:
 };
-
-Framework.LoadExtension("/example-extensions/Converter.js");
