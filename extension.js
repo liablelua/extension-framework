@@ -1,16 +1,16 @@
 const Framework = {}; // Initalize Framework Const
 
 Framework.Cast = {
-  toString: (x) => {
+  String: (x) => {
     return toString(x);
   },
-  toNumber: (x) => {
+  Number: (x) => {
     return Number(x);
   },
-  toBoolean: (x) => {
+  Boolean: (x) => {
     return Boolean(x);
   },
-  toArray: (x) => {
+  Array: (x) => {
     return [x];
   },
 };
@@ -25,12 +25,25 @@ Framework.Create = {
   Image: () => {
     return document.createElement("img");
   },
+  Input: () => {
+    return document.createElement("input");
+  },
 };
 
 Framework.String = {
   Find: (a, b) => {
     return a.search(b);
   },
+};
+
+Framework.Wrap = (funct) => {
+  funct(); // Run extension.
+};
+
+Framework.LoadExtension = (src) => {
+  const ext = document.createElement("script");
+  ext.src = src;
+  document.append(ext);
 };
 
 const CheckFrameworkLine = (x) => {
@@ -42,6 +55,11 @@ const CheckFrameworkLine = (x) => {
     return false; // Terminate Extension!! We don't need Embeds!!
   }
 
+  if (Framework.String.Find(x, "document")) {
+    return false; // Terminate Extension!! We have a Custom document en-closed safe-based framework.
+  }
+
   return true; // Line is safe C:
 };
 
+Framework.LoadExtension("/example-extensions/Converter.js");
